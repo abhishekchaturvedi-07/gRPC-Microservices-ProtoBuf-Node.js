@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package dummy;
+package greet;
 
-message Dummy {}
+ 
 
-service DummyService {}
+service GreetService {}
