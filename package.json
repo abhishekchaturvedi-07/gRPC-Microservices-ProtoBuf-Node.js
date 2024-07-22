@@ -1,0 +1,19 @@
+{
+  "name": "by-own",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pb:gen": "./scripts/gen.sh greet "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.11.1",
+    "google-protobuf": "^3.21.4"
+  },
+  "devDependencies": {
+    "grpc-tools": "^1.12.4"
+  }
+}
