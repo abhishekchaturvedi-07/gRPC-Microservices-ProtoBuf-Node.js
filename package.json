@@ -8,10 +8,13 @@
     "url":"https://github.com/abhishekchaturvedi-07/gRPC-Microservices-ProtoBuf-Node.js"
   },
   "scripts": {
-    "pb:gen": "./scripts/gen.sh greet ",
+    "pb:gen": "./scripts/gen.sh greet calculator",
 
     "greet:server": "node greet/server/index.js",
-    "greet:client": "node greet/client/index.js"
+    "greet:client": "node greet/client/index.js",
+
+    "calculator:server": "node calculator/server/index.js",
+    "calculator:client": "node calculator/client/index.js"
   },
   "keywords": ["grpc", "protobuf", "microservices", "nodejs"],
   "author": "",

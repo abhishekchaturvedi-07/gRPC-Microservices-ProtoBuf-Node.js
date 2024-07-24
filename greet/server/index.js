@@ -1,4 +1,4 @@
-// const fs = require('fs');
+const fs = require('fs');
 const grpc = require('@grpc/grpc-js');
 const service = require('../proto/greet_grpc_pb');
 const serviceImpl = require('./service_impl');
@@ -16,31 +16,28 @@ function cleanup(server) {
 function main() {
   const server = new grpc.Server();
 
-  const creds = grpc.ServerCredentials.createInsecure()
-
   process.on('SIGINT', () => {
     console.log('Caught interrupt signal');
     cleanup(server);
   });
 
-  // const tls = true;
-  // let creds;
+  const tls = true;
+  let creds;
 
-  // if (tls) {
-  //   const rootCert = fs.readFileSync('./ssl/ca.crt');
-  //   const certChain = fs.readFileSync('./ssl/server.crt');
-  //   const privateKey = fs.readFileSync('./ssl/server.pem');
+  if (tls) {
+    const rootCert = fs.readFileSync('./ssl/ca.crt');
+    const certChain = fs.readFileSync('./ssl/server.crt');
+    const privateKey = fs.readFileSync('./ssl/server.pem');
 
-  //   creds = grpc.ServerCredentials.createSsl(rootCert, [{
-  //     cert_chain: certChain,
-  //     private_key: privateKey,
-  //   }]);
-  // } else {
-  //   creds = grpc.ServerCredentials.createInsecure();
-  // }
+    creds = grpc.ServerCredentials.createSsl(rootCert, [{
+      cert_chain: certChain,
+      private_key: privateKey,
+    }]);
+  } else {
+    creds = grpc.ServerCredentials.createInsecure();
+  }
 
   server.addService(service.GreetServiceService, serviceImpl);
-
   server.bindAsync(addr, creds, (err, _) => {
     if (err) {
       return cleanup(server);
