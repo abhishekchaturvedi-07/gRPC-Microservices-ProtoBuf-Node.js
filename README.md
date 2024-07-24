@@ -1,4 +1,4 @@
-Here's a `README.md` file for your GitHub repository on gRPC and microservices:
+Here's a `README.md` file for your GitHub repository on gRPC and microservices
 
 ```markdown
 # gRPC and Microservices
